@@ -1,4 +1,4 @@
-const socket = new WebSocket("ws://ws.sweep.salamithecat.com/")
+const socket = new WebSocket("wss://ws-sweep.salamithecat.com/")
 socket.binaryType = "arraybuffer"
 
 console.log("Connecting to the server...")
