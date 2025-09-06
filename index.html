@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="death_overlay"
+        style="visibility: hidden; position: absolute; display: flex; align-items: center; justify-content: center; width: 100vw; height: 100vh; background: rgba(0,0,0,0.4); pointer-events: none; backdrop-filter: grayscale(1); flex-direction: column;">
+        <img src="/static/deadtext.gif">
+        <h1 style="text-shadow: black 0px 0px 5px;" id="unban_timer">u for: </h1>
+    </div>
+    <div
+        style="position: absolute; background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 10%); pointer-events: none; width: 100vw; height: 100vh; padding: 1.5rem">
+        <p id="dbg_pos_ch" style="text-shadow: black 1px 1px 3px; color: white;">x: y:</p>
+        <p id="dbg_pos_tl" style="text-shadow: black 1px 1px 3px; color: white;">x: y:</p>
+        <p id="dbg_fps" style="text-shadow: black 1px 1px 5px; color: white;">??fps</p>
+    </div>
+    <!-- <div class="chat-area" style="position: absolute; bottom: 0; left: 0; padding: 1.5rem;">
+        <div class="chat">
+            <span>[Server] evil message of doom</span>
+            <span>[Server] evil message of doom</span>
+            <span>[Server] evil message of doom</span>
+            <span>[Server] evil message of doom</span>
+            <span>[Server] evil message of doom</span>
+            <span>[Server] evil message of doom</span>
+        </div>
+        <input type="text">
+    </div> -->
+</body>
+
+
+
+
+<script src="cell.js"></script>
+<script src="chunk/baseChunk.js"></script>
+<script src="chunk/pendingChunk.js"></script>
+<script src="chunk/chunk.js"></script>
+<script src="player.js"></script>
+
+<script src="bombKiller.js"></script>
+
+<script src="packets/PlayerUnregister.js"></script>
+<script src="packets/Banned.js"></script>
+<script src="packets/RevealCell.js"></script>
+<script src="packets/CursorUpdate.js"></script>
+<script src="packets/PlayerRegister.js"></script>
+<script src="packets/ChunkReceived.js"></script>
+<script src="packets/MarkCell.js"></script>
+<script src="packets/ChunkDoesntExist.js"></script>
+<script src="packets/ChordCell.js"></script>
+
+<script src="networkhandler.js"></script>
+
+<script src="index.js"></script>
+
+</html>
