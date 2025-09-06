@@ -248,7 +248,7 @@ class PannableCanvas {
             my = e.clientY
 
             this.dragDifference = Math.abs((this.panStartPosition.x - e.clientX) + (this.panStartPosition.y - e.clientY))
-            if (this.dragDifference > 10 && this.mouseDown) {
+            if (this.dragDifference > 5 && this.mouseDown) {
                 this.internal_viewportPosition.x = this.panStartPosition.vx - (this.panStartPosition.x - e.clientX)
                 this.internal_viewportPosition.y = this.panStartPosition.vy - (this.panStartPosition.y - e.clientY)
             }
