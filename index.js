@@ -1,6 +1,8 @@
 const socket = new WebSocket("wss://ws-sweep.salamithecat.com/")
 socket.binaryType = "arraybuffer"
 
+const connection_overlay = document.getElementById("connection_overlay")
+
 console.log("Connecting to the server...")
 
 socket.onopen = (e) => {
@@ -8,6 +10,7 @@ socket.onopen = (e) => {
 }
 socket.onclose = (e) => {
     console.warn("Socket connection was lost")
+    connection_overlay.style.visibility = "visible"
 }
 socket.onmessage = (event) => {
     ReceivedData(event.data)
