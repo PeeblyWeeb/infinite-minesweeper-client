@@ -1,3 +1,5 @@
+let clientPlayerId = null
+
 class PlayerRegisterPacket {
     packetId = 1
 
@@ -5,8 +7,12 @@ class PlayerRegisterPacket {
         let playerId = view.getInt32(0, false)
         let local = view.getUint8(4) == 1
 
-        new Player(playerId, local);
+        if (local) {
+            clientPlayerId = playerId
+            console.log(`Set client player ID to ${playerId}`)
+        }
 
+        new Player(playerId, local)
         console.log(`registered player with id ${playerId}`)
     }
 }
