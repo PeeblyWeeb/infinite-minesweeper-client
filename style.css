@@ -19,6 +19,7 @@
     --blur-glass: blur(5px);
     --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     --text-shadow: 1px 1px 3px black;
+    --text-shadow-strong: 2px 2px 6px black;
     
     /* Spacing */
     --spacing-sm: 0.5rem;
@@ -142,6 +143,11 @@ div.chat>span {
     height: 100vh;
     flex-direction: column;
     visibility: hidden;
+}
+
+.overlay--timer {
+    text-shadow: var(--text-shadow-strong);
+    color: var(--color-text);
 }
 
 .overlay--death {
