@@ -283,8 +283,8 @@ class PannableCanvas {
     }
 
     update() {
-        this.internal_viewportPosition.x += this.velocityX * deltaTime
-        this.internal_viewportPosition.y += this.velocityY * deltaTime
+        // this.internal_viewportPosition.x += this.velocityX * deltaTime
+        // this.internal_viewportPosition.y += this.velocityY * deltaTime
 
         let currentMagnitude = magnitude(this.velocityX, this.velocityY)
         let newMagnitude = Math.max(currentMagnitude - deltaTime * 3500, 0)
