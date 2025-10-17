@@ -273,6 +273,7 @@ class PannableCanvas {
                 adj.forceRender()
             })
             lastchordhoveredtile.chordhover = false
+            lastchordhoveredtile.forceRender()
         }
     }
 
@@ -285,6 +286,7 @@ class PannableCanvas {
                 adj.forceRender()
             })
             lastchordhoveredtile.chordhover = false
+            lastchordhoveredtile.forceRender()
         }
         if (e.button != 0)
             return
@@ -472,6 +474,7 @@ function update() {
                 adj.forceRender()
             })
             lastchordhoveredtile.chordhover = false
+            lastchordhoveredtile.forceRender()
         }
         let cell = GetCellAtPosition(mx, my)
         cell.adjacentCells.forEach((adj) => {
@@ -479,6 +482,7 @@ function update() {
             adj.forceRender()
         })
         cell.chordhover = true
+        adj.forceRender()
         lastchordhoveredtile = cell
     }
 
