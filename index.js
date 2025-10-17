@@ -1,4 +1,4 @@
-const socket = new WebSocket("wss://ws-sweep.salamithecat.com/")
+const socket = new WebSocket("wss://ws-sweep.salamithecat.com")
 socket.binaryType = "arraybuffer"
 
 const connection_overlay = document.getElementById("connection_overlay")
@@ -31,6 +31,9 @@ socket.onmessage = (event) => {
 }*/
 
 let deltaTime = 0
+
+let chordhovering = false;
+let lastchordhoveredtile = null;
 
 let mx = 0
 let my = 0
@@ -223,6 +226,11 @@ class PannableCanvas {
         }
 
         this.canvas.onmousedown = (e) => {
+            console.log(e.button)
+            if (e.button == 1) {
+                chordhovering = true
+            }
+
             if (e.button != 0) {
                 return
             }
@@ -257,9 +265,25 @@ class PannableCanvas {
 
     cancelPanning() {
         this.mouseDown = false
+        chordhovering = false
+
+        if (lastchordhoveredtile != null) {
+            lastchordhoveredtile.adjacentCells.forEach((adj) => {
+                adj.chordhover = false;
+                adj.forceRender()
+            })
+        }
     }
 
     stopPanning(e) {
+        chordhovering = false
+
+        if (lastchordhoveredtile != null) {
+            lastchordhoveredtile.adjacentCells.forEach((adj) => {
+                adj.chordhover = false;
+                adj.forceRender()
+            })
+        }
         if (e.button != 0)
             return
         this.mouseDown = false
@@ -438,6 +462,22 @@ function update() {
 
     let chunkX = Math.round(x / cellsPerChunkScaled)
     let chunkY = Math.round(y / cellsPerChunkScaled)
+
+    if (chordhovering) {
+        if (lastchordhoveredtile != null) {
+            lastchordhoveredtile.adjacentCells.forEach((adj) => {
+                adj.chordhover = false;
+                adj.forceRender()
+            })
+        }
+        let cell = GetCellAtPosition(mx, my)
+        cell.adjacentCells.forEach((adj) => {
+            adj.chordhover = true;
+            adj.forceRender()
+        })
+        lastchordhoveredtile = cell
+    }
+
 
     document.getElementById("dbg_pos_ch").innerText = `Coordinates (Chunk): ${chunkX}, ${chunkY}`
     document.getElementById("dbg_pos_tl").innerText = `Coordinates (Tile): ${Math.floor(panCanvas.viewportPosition.x / 16)}, ${Math.floor(panCanvas.viewportPosition.y / 16)}`

@@ -77,6 +77,8 @@ class Cell {
     marked = false
     bomb = false
 
+    chordhover = false
+
     adjacentBombs = 0
     adjacentCellsCardinal = []
     adjacentCells = []
@@ -217,6 +219,9 @@ class Cell {
         /*if (this.bomb) {
             return tileImages.bomb
         }*/
+        if (!this.revealed && !this.marked && this.chordhover) {
+            return tileImages.revealed[0]
+        }
         if (this.revealed) {
             if (this.bomb) {
                 return tileImages.marked
