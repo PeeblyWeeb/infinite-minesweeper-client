@@ -224,7 +224,7 @@ class Cell {
         }
         if (this.revealed) {
             if (this.bomb) {
-                return tileImages.marked
+                return tileImages.bomb_clicked
             }
             return tileImages.revealed[this.adjacentBombs]
         }
